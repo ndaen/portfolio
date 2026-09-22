@@ -49,3 +49,4 @@ _bmad/
 .claude/projects/
 .claude/worktrees/
 .claude/screenshots/
+.vitest/

@@ -1,0 +1,8 @@
+candidate:
+  full_name: "Jean Exemple"
+  email: "jean@exemple.fr"
+  location: "Lyon, France"
+  linkedin: "linkedin.com/in/jexemple"
+  github: "github.com/jexemple"
+narrative:
+  headline: "Développeur Test, deux ans en production"

@@ -1,0 +1,12 @@
+# Fichier généré par `npm run sync:cv` — ne pas éditer à la main.
+# Seuls les champs de la liste blanche (identité + titre) sont copiés
+# depuis career-ops ; téléphone, rémunération et ciblage restent privés.
+candidate:
+  full_name: Noah Daën
+  email: daennoah@gmail.com
+  location: Paris, France
+  linkedin: linkedin.com/in/noah-daen
+  github: github.com/ndaen
+narrative:
+  headline: Développeur Full Stack Symfony / API Platform et React Native, 2 ans
+    et demi en production chez Webedia
