@@ -73,6 +73,7 @@ export default async function PageProjet({ params }: { params: Promise<{ slug: s
           width={capture.largeur}
           height={capture.hauteur}
           sizes="320px"
+          preload
           className="mt-8 h-auto w-full max-w-[320px] rounded-2xl border border-line"
         />
       )}
