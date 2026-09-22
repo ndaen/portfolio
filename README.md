@@ -11,13 +11,13 @@ Site statique Next.js : une page d'accueil, un index des projets et une page par
 - Contenu en MDX, frontmatter validé par Zod au build
 - Animations en CSS pur (`animation-timeline: view()`), aucune bibliothèque d'animation
 - Vitest pour les modules, Playwright et axe-core pour l'accessibilité
-- Déployé sur Vercel
+- Déploiement sur Vercel
 
 ## Principes
 
 **Aucun fait saisi à la main.** Les informations personnelles (titre, disponibilité, compétences, contacts) sont lues au build depuis `content/source/`, une copie de mon CV produite par `npm run sync:cv`. Le site ne peut donc pas contredire le CV.
 
-**Copies expurgées.** Le script de synchronisation retire tout numéro de téléphone et ne garde du profil qu'une liste blanche de champs. Un test (`tests/source-privacy.test.ts`) échoue si une donnée sensible réapparaît.
+**Copies expurgées.** Le script de synchronisation retire tout numéro de téléphone au format français et ne garde du profil qu'une liste blanche de champs. Un test (`tests/source-privacy.test.ts`) échoue si une donnée sensible réapparaît.
 
 **Accessibilité vérifiée, pas affirmée.** Contrastes WCAG AA testés sur chaque paire de couleurs réellement rendue, suite axe sur les pages principales, animations désactivées sous `prefers-reduced-motion`.
 

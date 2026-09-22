@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://ndaen.xyz'),
   title: 'Noah Daën, développeur full stack',
   description:
-    'Développeur full stack Symfony et React Native. Deux ans et demi en production chez Webedia.',
+    'Développeur full stack Symfony et React Native. Deux ans et demi en alternance chez Webedia.',
 }
 
 const racine = process.cwd()
