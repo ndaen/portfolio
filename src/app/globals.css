@@ -30,3 +30,44 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Entrée du hero : translation uniquement, jamais l'opacité (le h1 est le LCP). */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes entree {
+    from {
+      transform: translateY(10px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .entree {
+    animation: entree 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--delai, 0s);
+  }
+}
+
+/* Apparition au scroll des tuiles/cartes : timeline de vue native, aucun JS.
+   Enfermée dans @supports : sans prise en charge (ex. Firefox aujourd'hui),
+   aucune règle ne s'applique et le contenu reste visible normalement. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes apparition {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .apparition {
+      animation: apparition linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 25%;
+    }
+  }
+}
