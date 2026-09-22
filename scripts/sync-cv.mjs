@@ -2,14 +2,10 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { parse as parseYaml, stringify as stringifyYaml } from 'yaml'
+import { expurgerTelephone } from './redact.mjs'
 
 const SOURCE = process.env.CAREER_OPS_ROOT ?? path.join(process.env.HOME, 'career-ops')
 const DEST = path.join(process.cwd(), 'content', 'source')
-
-// Motif générique de numéro de téléphone français : 06 39 98 12 34,
-// +33 6 39 98 12 34, 0639981234, avec espaces, points ou tirets comme
-// séparateurs. Volontairement pas de valeur en dur.
-const TELEPHONE_RE = /^(?:\+33[\s.-]?[1-9]|0[1-9])(?:[\s.-]?\d{2}){4}$/
 
 // Seuls ces chemins de clés quittent career-ops : tout le reste
 // (téléphone, compensation, ciblage, spend_tier, pipeline…) reste privé.
@@ -21,19 +17,6 @@ const LISTE_BLANCHE_PROFIL = [
   ['candidate', 'github'],
   ['narrative', 'headline'],
 ]
-
-function expurgerTelephone(cv) {
-  return cv
-    .split('\n')
-    .map((ligne) => {
-      if (!ligne.includes('·')) return ligne
-      const segments = ligne
-        .split(' · ')
-        .filter((segment) => !TELEPHONE_RE.test(segment.trim()))
-      return segments.join(' · ')
-    })
-    .join('\n')
-}
 
 function extraireProfilExpurge(yml, cheminSrc) {
   const source = parseYaml(yml)
