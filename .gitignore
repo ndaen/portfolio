@@ -50,3 +50,9 @@ _bmad/
 .claude/worktrees/
 .claude/screenshots/
 .vitest/
+
+# Fichiers de travail personnels, gardés en local, hors du dépôt public
+CLAUDE.md
+AGENTS.md
+docs/
+.claude/
