@@ -7,8 +7,8 @@ export function Hero() {
         Full stack. Je livre en <span className="text-accent">production</span>.
       </h1>
       <p className="entree [--delai:0.08s] mt-5 max-w-[42ch] text-base leading-relaxed text-muted">
-        Symfony, React Native, TypeScript. Deux ans et demi chez Webedia et trois
-        applications à moi, publiées et utilisables.
+        Symfony, React Native, TypeScript. Deux ans et demi en alternance chez Webedia
+        et trois applications à moi, publiées et utilisables.
       </p>
       <div className="entree [--delai:0.16s] mt-7 flex flex-wrap gap-3">
         <Link href="/projets" className="rounded-full bg-accent px-5 py-3 text-sm font-semibold text-bg">
