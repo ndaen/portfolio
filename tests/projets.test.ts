@@ -1,4 +1,6 @@
 import { describe, it, expect } from 'vitest'
+import fs from 'node:fs'
+import os from 'node:os'
 import path from 'node:path'
 import { listerProjets, lireProjet } from '@/lib/projets'
 
@@ -25,6 +27,19 @@ describe('listerProjets', () => {
     expect(cycle).toBeDefined()
     expect(cycle!.liens.some((l) => l.href.includes('github.com'))).toBe(false)
   })
+
+  it('rejette un frontmatter invalide avec le nom du fichier dans le message', () => {
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'projets-'))
+    try {
+      fs.writeFileSync(
+        path.join(tmp, 'invalide.mdx'),
+        '---\ntype: projet\nresume: Sans titre.\nstack: [Test]\netat: Test\nordre: 1\nvedette: false\nliens: []\n---\n\nCorps.\n',
+      )
+      expect(() => listerProjets(tmp)).toThrow(/invalide\.mdx/)
+    } finally {
+      fs.rmSync(tmp, { recursive: true, force: true })
+    }
+  })
 })
 
 describe('lireProjet', () => {
@@ -35,5 +50,10 @@ describe('lireProjet', () => {
 
   it('renvoie null pour un slug inconnu', () => {
     expect(lireProjet(dossier, 'nexistepas')).toBeNull()
+  })
+
+  it('renvoie null pour un slug qui tente une traversée de chemin', () => {
+    expect(lireProjet(dossier, '../package')).toBeNull()
+    expect(lireProjet(dossier, 'cubby/../cubby')).toBeNull()
   })
 })

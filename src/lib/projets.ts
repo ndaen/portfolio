@@ -35,6 +35,7 @@ export function listerProjets(dossier: string): Projet[] {
 }
 
 export function lireProjet(dossier: string, slug: string): Projet | null {
+  if (!/^[a-z0-9-]+$/.test(slug)) return null
   const fichier = `${slug}.mdx`
   if (!fs.existsSync(path.join(dossier, fichier))) return null
   return charger(dossier, fichier)
