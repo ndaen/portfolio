@@ -1,0 +1,27 @@
+import type { Profil } from '@/lib/profile'
+
+export function Footer({ profil }: { profil: Profil }) {
+  return (
+    <footer id="contact" className="mx-auto max-w-6xl border-t border-line px-4 py-12 sm:px-6">
+      <h2 className="text-2xl font-bold tracking-tight">Me contacter</h2>
+      <p className="mt-3 max-w-prose text-muted">{profil.disponibilite}</p>
+      <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+        <li>
+          <a className="text-accent underline underline-offset-4" href={`mailto:${profil.email}`}>
+            {profil.email}
+          </a>
+        </li>
+        <li>
+          <a className="text-accent underline underline-offset-4" href={`https://${profil.linkedin}`}>
+            Profil LinkedIn de Noah Daën
+          </a>
+        </li>
+        <li>
+          <a className="text-accent underline underline-offset-4" href={`https://${profil.github}`}>
+            Profil GitHub de Noah Daën
+          </a>
+        </li>
+      </ul>
+    </footer>
+  )
+}
