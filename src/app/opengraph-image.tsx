@@ -24,8 +24,21 @@ export default function Image() {
       >
         <div>Noah Daën</div>
         <div style={{ color: '#F0FF7A' }}>Full stack, en production.</div>
-        <div style={{ fontSize: 28, fontWeight: 400, color: '#A5C6B2', marginTop: 24 }}>
-          Symfony · React Native · TypeScript
+        <div
+          style={{
+            display: 'flex',
+            gap: 10,
+            fontSize: 28,
+            fontWeight: 400,
+            color: '#A5C6B2',
+            marginTop: 24,
+          }}
+        >
+          <span>Symfony</span>
+          <span>·</span>
+          <span>React Native</span>
+          <span>·</span>
+          <span>TypeScript</span>
         </div>
       </div>
     ),
