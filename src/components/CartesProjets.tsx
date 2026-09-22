@@ -9,6 +9,7 @@ export function CartesProjets({
   niveauTitre?: 'h1' | 'h2'
 }) {
   const Titre = niveauTitre
+  const TitreCarte = niveauTitre === 'h1' ? 'h2' : 'h3'
   return (
     <section className="mx-auto max-w-6xl px-4 sm:px-6">
       <div className="border-t border-line py-14">
@@ -20,7 +21,7 @@ export function CartesProjets({
                 href={`/projets/${p.slug}`}
                 className="block h-full rounded-2xl bg-surface p-5 transition-transform hover:-translate-y-0.5 motion-reduce:hover:translate-y-0"
               >
-                <h3 className="text-[15px] font-semibold">{p.titre}</h3>
+                <TitreCarte className="text-[15px] font-semibold">{p.titre}</TitreCarte>
                 <p className="mt-1.5 text-[13px] leading-relaxed text-muted">{p.resume}</p>
                 <p className="mt-3 text-[11.5px] text-meta">{p.stack.join(', ')}</p>
               </Link>
