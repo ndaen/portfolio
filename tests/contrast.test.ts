@@ -12,14 +12,16 @@ describe('contrastRatio', () => {
 })
 
 describe('jetons du thème', () => {
+  // contrastRatio sorts light/dark internally, so each pair is listed only once
   const paires: [string, string, string][] = [
     ['texte sur fond', tokens.text, tokens.bg],
     ['texte secondaire sur fond', tokens.textMuted, tokens.bg],
+    ['métadonnées sur fond', tokens.meta, tokens.bg],
     ['texte sur surface', tokens.text, tokens.surface],
     ['texte secondaire sur surface', tokens.textMuted, tokens.surface],
     ['métadonnées sur surface', tokens.meta, tokens.surface],
     ['accent sur fond', tokens.accent, tokens.bg],
-    ['fond sur accent', tokens.bg, tokens.accent],
+    ['accent sur surface', tokens.accent, tokens.surface],
   ]
   it.each(paires)('%s atteint AA', (_nom, avant, arriere) => {
     expect(contrastRatio(avant, arriere)).toBeGreaterThanOrEqual(4.5)
