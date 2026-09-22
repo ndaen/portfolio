@@ -65,9 +65,9 @@ body {
     }
 
     .apparition {
-      animation: apparition linear both;
+      animation: apparition linear forwards;
       animation-timeline: view();
-      animation-range: entry 0% cover 25%;
+      animation-range: entry 0% entry 100%;
     }
   }
 }
