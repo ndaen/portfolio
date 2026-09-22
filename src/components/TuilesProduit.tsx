@@ -12,7 +12,8 @@ const icones: Record<string, string> = {
 export function TuilesProduit({ projets }: { projets: Projet[] }) {
   return (
     <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-      <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <h2 className="sr-only">Mes applications</h2>
+      <ul className="grid grid-cols-1 gap-3 md:grid-cols-3">
         {projets.map((p, i) => (
           <li key={p.slug}>
             <Reveal delai={i * 0.06}>

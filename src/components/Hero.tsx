@@ -12,7 +12,7 @@ export function Hero() {
       <EntreeHero delai={0.08}>
         <p className="mt-5 max-w-[42ch] text-base leading-relaxed text-muted">
           Symfony, React Native, TypeScript. Deux ans et demi chez Webedia et trois
-          applications à moi, en ligne et utilisables.
+          applications à moi, publiées et utilisables.
         </p>
       </EntreeHero>
       <EntreeHero delai={0.16}>

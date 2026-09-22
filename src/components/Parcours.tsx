@@ -8,21 +8,26 @@ const faits = [
 
 export function Parcours() {
   return (
-    <section id="parcours" className="mx-auto max-w-6xl scroll-mt-20 border-t border-line px-4 py-14 sm:px-6">
-      <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-        Ce que j&apos;ai livré en production
-      </h2>
-      <p className="mt-3 max-w-[60ch] text-muted">
-        Deux ans et demi en alternance chez Sampleo, groupe Webedia, dans une équipe
-        tech de six personnes, sur deux produits en production.
-      </p>
-      <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-        {faits.map((f) => (
-          <li key={f} className="rounded-2xl bg-surface p-5 text-[14.5px] leading-relaxed">
-            {f}
-          </li>
-        ))}
-      </ul>
+    <section id="parcours" className="mx-auto max-w-6xl scroll-mt-20 px-4 sm:px-6">
+      <div className="border-t border-line py-14">
+        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+          Ce que j&apos;ai livré en production
+        </h2>
+        <p className="mt-3 max-w-[60ch] text-muted">
+          Deux ans et demi en alternance chez Sampleo, groupe Webedia, dans une équipe
+          tech de six personnes, sur deux produits en production.
+        </p>
+        <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+          {faits.map((f, i) => (
+            <li
+              key={f}
+              className={`rounded-2xl bg-surface p-5 text-[14.5px] leading-relaxed ${i === 0 ? 'sm:col-span-2' : ''}`}
+            >
+              {f}
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   )
 }
