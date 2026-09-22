@@ -43,7 +43,7 @@ Stack : PHP · Symfony
 ## Projects
 
 ### Rythmix — React Native · AdonisJS · Expo
-Projet de fin d'études. App musicale gamifiée : succès, niveaux, badges et classements entre joueurs. Lead développeur de l'équipe : organisation du travail et revue de code des contributions. CI/CD GitLab : tests unitaires front et API à chaque PR, build de test Expo automatique.
+Projet de fin d'études. App musicale gamifiée : succès, niveaux, badges et classements entre joueurs. Lead développeur de l'équipe : mise en place de la méthode Scrum, organisation du travail et revue de code des contributions. CI/CD GitLab : tests unitaires front et API à chaque PR, build de test Expo automatique.
 
 ### CryptoViz — Kafka · Spark · NestJS · React
 Pipeline temps réel de cours crypto, calcul du VWAP et visualisation en continu.
@@ -67,6 +67,7 @@ Analyse Big Data du marché immobilier français avec visualisations interactive
 - **Data :** Kafka, Spark, Hadoop, PostgreSQL / MySQL
 - **Authentification :** JWT avec API Platform, OAuth2 / OIDC (connexion GitHub, connexion Google), sessions sur API AdonisJS (projets Epitech et personnels)
 - **DevOps :** Docker, Kubernetes, Git / GitLab, revues de code, CI/CD (GitHub Actions, GitLab CI) sur projets Epitech
+- **Méthodes :** Scrum en entreprise (sprint planning, sprint review, raffinement et création de tickets, Jira) et mis en place sur le projet de fin d'études
 - **IA :** Intégration d'API LLM (Gemini) en production, extraction de documents, NLP (spaCy, CamemBERT), développement assisté par IA (Claude Code)
 
 ## Languages
