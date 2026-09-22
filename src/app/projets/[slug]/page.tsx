@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { listerProjets, lireProjet } from '@/lib/projets'
 import { icones, captures } from '@/lib/visuels'
+import { composantsMdx } from '@/components/mdx'
 
 const dossier = path.join(process.cwd(), 'content/projets')
 
@@ -64,7 +65,7 @@ export default async function PageProjet({ params }: { params: Promise<{ slug: s
       )}
 
       <div className="mt-10 max-w-prose space-y-5 text-[15.5px] leading-relaxed text-muted">
-        <MDXRemote source={projet.corps} />
+        <MDXRemote source={projet.corps} components={composantsMdx} />
       </div>
 
       {capture && (
@@ -73,6 +74,7 @@ export default async function PageProjet({ params }: { params: Promise<{ slug: s
           alt={capture.alt}
           width={capture.width}
           height={capture.height}
+          sizes="320px"
           className="mt-8 h-auto w-full max-w-[320px] rounded-2xl border border-line"
         />
       )}
