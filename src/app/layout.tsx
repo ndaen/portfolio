@@ -25,6 +25,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: profil.nomComplet,
+              jobTitle: 'Développeur full stack',
+              email: `mailto:${profil.email}`,
+              url: 'https://ndaen.xyz',
+              sameAs: [`https://${profil.github}`, `https://${profil.linkedin}`],
+              address: { '@type': 'PostalAddress', addressLocality: profil.localisation },
+            }),
+          }}
+        />
         <Nav disponibilite={pastilleDisponibilite(profil.disponibilite)} />
         <main>{children}</main>
         <Footer profil={profil} />
