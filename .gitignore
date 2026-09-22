@@ -1,0 +1,14 @@
+.DS_Store
+node_modules/
+.env
+.env.local
+
+# BMAD — moteur et agents, réinstallés par projet via newapp
+_bmad/
+.claude/skills/bmad-*/
+
+# Claude Code — local à la machine
+.claude/settings.local.json
+.claude/projects/
+.claude/worktrees/
+.claude/screenshots/

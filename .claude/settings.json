@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rtk ls *)",
+      "Bash(rtk find *)",
+      "Bash(rtk git *)",
+      "Bash(rtk read *)",
+      "Bash(rtk grep *)",
+      "Bash(rtk ps *)",
+      "Bash(rm -f .DS_Store)",
+      "Bash(claude --version)",
+      "Bash(lsof -iTCP -sTCP:LISTEN -P)",
+      "mcp__plugin_claude-mem_mcp-search__search",
+      "mcp__plugin_claude-mem_mcp-search__get_observations"
+    ]
+  },
+  "enableAllProjectMcpServers": true
+}
