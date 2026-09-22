@@ -1,12 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Projet } from '@/lib/projets'
-
-const icones: Record<string, string> = {
-  cubby: '/apps/cubby.png',
-  snappy: '/apps/snappy.png',
-  'cycle-calculator': '/apps/cycle.png',
-}
+import { icones } from '@/lib/visuels'
 
 export function TuilesProduit({ projets }: { projets: Projet[] }) {
   return (
