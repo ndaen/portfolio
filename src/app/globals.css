@@ -11,6 +11,15 @@
   --radius-tile: 16px;
 }
 
+/* Les variables --font-geist-sans/--font-geist-mono sont posées à l'exécution
+   par `geist/font/*` sur <html> (layout.tsx). @theme inline les relie aux
+   utilitaires Tailwind font-sans/font-mono sans les redéclarer, avec un
+   repli si la variable n'est pas encore posée. */
+@theme inline {
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
 html { color-scheme: dark; }
 
 body {
