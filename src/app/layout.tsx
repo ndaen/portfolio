@@ -4,6 +4,7 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { lireProfil } from '@/lib/profile'
 import { pastilleDisponibilite } from '@/lib/disponibilite'
+import { avecSchema } from '@/lib/url'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/Footer'
 import './globals.css'
@@ -35,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               jobTitle: 'Développeur full stack',
               email: `mailto:${profil.email}`,
               url: 'https://ndaen.xyz',
-              sameAs: [`https://${profil.github}`, `https://${profil.linkedin}`],
+              sameAs: [avecSchema(profil.github), avecSchema(profil.linkedin)],
               address: { '@type': 'PostalAddress', addressLocality: profil.localisation },
             }),
           }}

@@ -1,4 +1,5 @@
 import type { Profil } from '@/lib/profile'
+import { avecSchema } from '@/lib/url'
 
 export function Footer({ profil }: { profil: Profil }) {
   return (
@@ -13,12 +14,12 @@ export function Footer({ profil }: { profil: Profil }) {
             </a>
           </li>
           <li>
-            <a className="text-accent underline underline-offset-4" href={`https://${profil.linkedin}`}>
+            <a className="text-accent underline underline-offset-4" href={avecSchema(profil.linkedin)}>
               Profil LinkedIn de Noah Daën
             </a>
           </li>
           <li>
-            <a className="text-accent underline underline-offset-4" href={`https://${profil.github}`}>
+            <a className="text-accent underline underline-offset-4" href={avecSchema(profil.github)}>
               Profil GitHub de Noah Daën
             </a>
           </li>
