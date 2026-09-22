@@ -40,6 +40,75 @@ describe('listerProjets', () => {
       fs.rmSync(tmp, { recursive: true, force: true })
     }
   })
+
+  it('rejette un projet vedette sans icône, en nommant le fichier', () => {
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'projets-'))
+    try {
+      fs.writeFileSync(
+        path.join(tmp, 'sans-icone.mdx'),
+        '---\ntitre: Sans icône\ntype: projet\nresume: Un résumé.\nstack: [Test]\netat: Test\nordre: 1\nvedette: true\nliens: []\n---\n\nCorps.\n',
+      )
+      expect(() => listerProjets(tmp)).toThrow(/sans-icone\.mdx/)
+    } finally {
+      fs.rmSync(tmp, { recursive: true, force: true })
+    }
+  })
+
+  it('rejette un nom de fichier qui ne donne pas un slug valide', () => {
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'projets-'))
+    try {
+      fs.writeFileSync(
+        path.join(tmp, 'Mon-Projet.mdx'),
+        '---\ntitre: Mon projet\ntype: projet\nresume: Un résumé.\nstack: [Test]\netat: Test\nordre: 1\nvedette: false\nliens: []\n---\n\nCorps.\n',
+      )
+      expect(() => listerProjets(tmp)).toThrow(/Mon-Projet\.mdx/)
+    } finally {
+      fs.rmSync(tmp, { recursive: true, force: true })
+    }
+  })
+
+  it('rejette une capture mal formée', () => {
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'projets-'))
+    try {
+      fs.writeFileSync(
+        path.join(tmp, 'capture-invalide.mdx'),
+        [
+          '---',
+          'titre: Capture invalide',
+          'type: projet',
+          'resume: Un résumé.',
+          'stack: [Test]',
+          'etat: Test',
+          'ordre: 1',
+          'vedette: false',
+          'liens: []',
+          'capture:',
+          '  src: /projets/x.png',
+          '  alt: ""',
+          '  largeur: 0',
+          '  hauteur: 100',
+          '---',
+          '',
+          'Corps.',
+          '',
+        ].join('\n'),
+      )
+      expect(() => listerProjets(tmp)).toThrow(/capture-invalide\.mdx/)
+    } finally {
+      fs.rmSync(tmp, { recursive: true, force: true })
+    }
+  })
+
+  it('accepte les six vrais projets avec leurs visuels', () => {
+    for (const p of projets) {
+      if (p.vedette) expect(p.icone).toMatch(/^\//)
+      if (p.capture) {
+        expect(p.capture.alt.length).toBeGreaterThan(0)
+        expect(Number.isInteger(p.capture.largeur)).toBe(true)
+        expect(Number.isInteger(p.capture.hauteur)).toBe(true)
+      }
+    }
+  })
 })
 
 describe('lireProjet', () => {

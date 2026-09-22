@@ -12,9 +12,23 @@ const schema = z.object({
   ordre: z.number().int(),
   vedette: z.boolean(),
   liens: z.array(z.object({ label: z.string(), href: z.url() })),
+  icone: z
+    .string()
+    .regex(/^\//, 'icone doit être un chemin commençant par /')
+    .optional(),
+  capture: z
+    .object({
+      src: z.string().min(1),
+      alt: z.string().min(1),
+      largeur: z.number().int().positive(),
+      hauteur: z.number().int().positive(),
+    })
+    .optional(),
 })
 
 export type Projet = z.infer<typeof schema> & { slug: string; corps: string }
+
+const SLUG_RE = /^[a-z0-9-]+$/
 
 function charger(dossier: string, fichier: string): Projet {
   const brut = fs.readFileSync(path.join(dossier, fichier), 'utf8')
@@ -23,7 +37,16 @@ function charger(dossier: string, fichier: string): Projet {
   if (!parsed.success) {
     throw new Error(`frontmatter invalide dans ${fichier} : ${parsed.error.message}`)
   }
-  return { ...parsed.data, slug: fichier.replace(/\.mdx$/, ''), corps: content.trim() }
+  if (parsed.data.vedette && !parsed.data.icone) {
+    throw new Error(`icone manquante pour le projet vedette ${fichier}`)
+  }
+  const slug = fichier.replace(/\.mdx$/, '')
+  if (!SLUG_RE.test(slug)) {
+    throw new Error(
+      `nom de fichier invalide (ne donne pas un slug valide, attendu ${SLUG_RE}) : ${fichier}`,
+    )
+  }
+  return { ...parsed.data, slug, corps: content.trim() }
 }
 
 export function listerProjets(dossier: string): Projet[] {

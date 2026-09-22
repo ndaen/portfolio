@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { listerProjets, lireProjet } from '@/lib/projets'
-import { icones, captures } from '@/lib/visuels'
 import { composantsMdx } from '@/components/mdx'
 
 const dossier = path.join(process.cwd(), 'content/projets')
@@ -29,15 +28,14 @@ export default async function PageProjet({ params }: { params: Promise<{ slug: s
   const projet = lireProjet(dossier, slug)
   if (!projet) notFound()
 
-  const icone = icones[slug]
-  const capture = captures[slug]
+  const capture = projet.capture
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
       <div className="flex items-center gap-4">
-        {icone && (
+        {projet.icone && (
           <Image
-            src={icone}
+            src={projet.icone}
             alt=""
             width={64}
             height={64}
@@ -72,8 +70,8 @@ export default async function PageProjet({ params }: { params: Promise<{ slug: s
         <Image
           src={capture.src}
           alt={capture.alt}
-          width={capture.width}
-          height={capture.height}
+          width={capture.largeur}
+          height={capture.hauteur}
           sizes="320px"
           className="mt-8 h-auto w-full max-w-[320px] rounded-2xl border border-line"
         />

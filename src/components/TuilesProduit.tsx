@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Projet } from '@/lib/projets'
-import { icones } from '@/lib/visuels'
 
 export function TuilesProduit({ projets }: { projets: Projet[] }) {
   return (
@@ -14,7 +13,9 @@ export function TuilesProduit({ projets }: { projets: Projet[] }) {
               href={`/projets/${p.slug}`}
               className="block h-full rounded-2xl bg-surface p-5 transition-transform hover:-translate-y-0.5 motion-reduce:hover:translate-y-0"
             >
-              <Image src={icones[p.slug]} alt="" width={48} height={48} className="rounded-xl" />
+              {p.icone && (
+                <Image src={p.icone} alt="" width={48} height={48} className="rounded-xl" />
+              )}
               <h3 className="mt-4 text-[15px] font-semibold">{p.titre}</h3>
               <p className="mt-1.5 text-[13px] leading-relaxed text-muted">{p.resume}</p>
               <p className="mt-3 text-[11.5px] text-meta">
