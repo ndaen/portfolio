@@ -44,6 +44,16 @@ export function lireProfil(cheminCv: string, cheminYml: string): Profil {
     throw new Error(`profil incomplet dans ${cheminYml}`)
   }
 
+  const disponibilite = section(cv, 'Availability')
+  if (!disponibilite) {
+    throw new Error(`section Availability absente ou vide dans ${cheminCv}`)
+  }
+
+  const listeCompetences = competences(section(cv, 'Skills'))
+  if (listeCompetences.length === 0) {
+    throw new Error(`section Skills absente ou vide dans ${cheminCv}`)
+  }
+
   return {
     nomComplet: c.full_name,
     email: c.email,
@@ -51,7 +61,7 @@ export function lireProfil(cheminCv: string, cheminYml: string): Profil {
     linkedin: c.linkedin ?? '',
     github: c.github ?? '',
     titre: yml?.narrative?.headline ?? '',
-    disponibilite: section(cv, 'Availability'),
-    competences: competences(section(cv, 'Skills')),
+    disponibilite,
+    competences: listeCompetences,
   }
 }

@@ -32,4 +32,22 @@ describe('lireProfil', () => {
   it('échoue bruyamment si un champ obligatoire manque', () => {
     expect(() => lireProfil('/introuvable.md', '/introuvable.yml')).toThrow()
   })
+
+  it('échoue en nommant la section si Availability est renommée ou absente', () => {
+    expect(() =>
+      lireProfil(
+        path.resolve(__dirname, 'fixtures/cv-sans-availability.fixture.md'),
+        path.resolve(__dirname, 'fixtures/profile.fixture.yml'),
+      ),
+    ).toThrow(/Availability/)
+  })
+
+  it('échoue en nommant la section si Skills est renommée ou absente', () => {
+    expect(() =>
+      lireProfil(
+        path.resolve(__dirname, 'fixtures/cv-sans-skills.fixture.md'),
+        path.resolve(__dirname, 'fixtures/profile.fixture.yml'),
+      ),
+    ).toThrow(/Skills/)
+  })
 })
