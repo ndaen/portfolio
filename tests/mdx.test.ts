@@ -15,10 +15,7 @@ describe('composantsMdx', () => {
   it('rend un lien avec le jeton text-accent (rendu direct, sans passer par next-mdx-remote/rsc)', () => {
     const Lien = composantsMdx.a as React.ComponentType<React.ComponentPropsWithoutRef<'a'>>
     const html = renderToStaticMarkup(
-      React.createElement(Lien, {
-        href: 'https://ndaen.xyz',
-        children: 'Noah Daën',
-      }),
+      React.createElement(Lien, { href: 'https://ndaen.xyz' }, 'Noah Daën'),
     )
     expect(html).toContain('text-accent')
     expect(html).toContain('href="https://ndaen.xyz"')
