@@ -19,3 +19,25 @@ test('la navigation au clavier atteint le premier lien', async ({ page }) => {
   const actif = await page.evaluate(() => document.activeElement?.tagName)
   expect(actif).toBe('A')
 })
+
+test('le hero complet tient dans un premier écran de 1280 × 800', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 })
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.goto('/')
+  const bandeau = await page.locator('[data-bandeau]').boundingBox()
+  expect(bandeau).not.toBeNull()
+  expect(bandeau!.y + bandeau!.height).toBeLessThanOrEqual(800)
+})
+
+test('les sections portent le rythme vertical, jamais un padding écrasé', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await page.goto('/')
+  const padding = await page
+    .locator('#parcours > div')
+    .evaluate((el) => {
+      const s = getComputedStyle(el)
+      return { haut: parseFloat(s.paddingTop), bas: parseFloat(s.paddingBottom) }
+    })
+  expect(padding.haut).toBeGreaterThanOrEqual(72)
+  expect(padding.bas).toBe(padding.haut)
+})
