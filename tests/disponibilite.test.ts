@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { pastilleDisponibilite } from '@/lib/disponibilite'
+import { pastilleDisponibilite, resumeDisponibilite } from '@/lib/disponibilite'
 
 describe('pastilleDisponibilite', () => {
   it('extrait le jour et le mois de la disponibilité actuelle', () => {
@@ -18,5 +18,19 @@ describe('pastilleDisponibilite', () => {
 
   it("renvoie 'Disponible' si aucune date n'est trouvée", () => {
     expect(pastilleDisponibilite('Disponible immédiatement')).toBe('Disponible')
+  })
+})
+
+describe('resumeDisponibilite', () => {
+  it('garde la date et le contrat', () => {
+    expect(
+      resumeDisponibilite(
+        'Disponible à partir du 26 septembre 2026 · CDI · Paris et Île-de-France, télétravail partiel',
+      ),
+    ).toBe('26 septembre 2026 · CDI')
+  })
+
+  it('renvoie la phrase seule sans contrat', () => {
+    expect(resumeDisponibilite('Disponible immédiatement')).toBe('Disponible immédiatement')
   })
 })

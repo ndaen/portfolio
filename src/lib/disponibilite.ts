@@ -25,3 +25,13 @@ export function pastilleDisponibilite(disponibilite: string): string {
   const [, jour, mois] = m
   return `Disponible le ${jour} ${mois.toLowerCase()}`
 }
+
+/**
+ * Valeur « Disponibilité » du bandeau du hero : la date et le contrat, tels
+ * qu'écrits dans la section Availability du CV (« 26 septembre 2026 · CDI »).
+ */
+export function resumeDisponibilite(disponibilite: string): string {
+  const [premier, contrat] = disponibilite.split('·').map((s) => s.trim())
+  const date = premier.replace(/^disponible\s+(à\s+partir\s+du|dès\s+le|le)\s+/i, '')
+  return contrat ? `${date} · ${contrat}` : date
+}

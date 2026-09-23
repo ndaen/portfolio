@@ -1,6 +1,6 @@
 # Jean Exemple
 
-**Développeur Test**
+**Développeur Test · PHP · React**
 
 Lyon · jean@exemple.fr · [github.com/jexemple](https://github.com/jexemple)
 

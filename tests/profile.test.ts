@@ -18,6 +18,20 @@ describe('lireProfil', () => {
     expect(profil.titre).toBe('Développeur Test, deux ans en production')
   })
 
+  it("sépare le rôle et la stack principale de la ligne d'accroche", () => {
+    expect(profil.role).toBe('Développeur Test')
+    expect(profil.stackPrincipale).toBe('PHP · React')
+  })
+
+  it("échoue en le nommant si la ligne d'accroche est absente", () => {
+    expect(() =>
+      lireProfil(
+        path.resolve(__dirname, 'fixtures/cv-sans-accroche.fixture.md'),
+        path.resolve(__dirname, 'fixtures/profile.fixture.yml'),
+      ),
+    ).toThrow(/accroche/)
+  })
+
   it('extrait la disponibilité du CV', () => {
     expect(profil.disponibilite).toContain('1er janvier 2027')
   })
