@@ -18,6 +18,10 @@ export function Nav({ disponibilite }: { disponibilite: string }) {
               {l.label}
             </Link>
           ))}
+          {/* Fichier statique : une ancre simple, pas de préchargement par next/link. */}
+          <a href="/cv.pdf" className="text-sm text-muted hover:text-text">
+            CV
+          </a>
           <span className="hidden rounded-full bg-accent px-3.5 py-1.5 text-xs font-semibold text-bg sm:inline">
             {disponibilite}
           </span>
