@@ -1,6 +1,7 @@
 import path from 'node:path'
 import { listerProjets } from '@/lib/projets'
 import { lireProfil } from '@/lib/profile'
+import { pastilleDisponibilite, resumeDisponibilite } from '@/lib/disponibilite'
 import { Hero } from '@/components/Hero'
 import { TuilesProduit } from '@/components/TuilesProduit'
 import { Parcours } from '@/components/Parcours'
@@ -16,7 +17,15 @@ export default function Accueil() {
   )
   return (
     <>
-      <Hero />
+      <Hero
+        disponibilite={pastilleDisponibilite(profil.disponibilite)}
+        faits={[
+          { libelle: 'Rôle', valeur: profil.role },
+          { libelle: 'Stack', valeur: profil.stackPrincipale },
+          { libelle: 'Lieu', valeur: profil.localisation },
+          { libelle: 'Disponibilité', valeur: resumeDisponibilite(profil.disponibilite) },
+        ]}
+      />
       <TuilesProduit projets={projets.filter((p) => p.vedette)} />
       <Parcours />
       <CartesProjets projets={projets} repere="02" />

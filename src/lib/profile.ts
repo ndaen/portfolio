@@ -56,7 +56,7 @@ export function lireProfil(cheminCv: string, cheminYml: string): Profil {
   const yml = parseYaml(fs.readFileSync(cheminYml, 'utf8'))
 
   const c = yml?.candidate
-  if (!c?.full_name || !c?.email) {
+  if (!c?.full_name || !c?.email || !c?.location) {
     throw new Error(`profil incomplet dans ${cheminYml}`)
   }
 
@@ -80,7 +80,7 @@ export function lireProfil(cheminCv: string, cheminYml: string): Profil {
   return {
     nomComplet: c.full_name,
     email: c.email,
-    localisation: c.location ?? '',
+    localisation: c.location,
     linkedin: c.linkedin ?? '',
     github: c.github ?? '',
     titre: yml?.narrative?.headline ?? '',
