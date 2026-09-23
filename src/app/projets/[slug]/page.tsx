@@ -46,8 +46,8 @@ export default async function PageProjet({ params }: { params: Promise<{ slug: s
       </div>
       <p className="mt-3 text-muted">{projet.resume}</p>
 
-      <p className="mt-5 text-[13px] text-meta">
-        {projet.stack.join(', ')}. {projet.etat}.
+      <p className="mt-5 font-mono text-[13px] text-meta">
+        {[...projet.stack, projet.etat].join(' · ')}
       </p>
 
       {projet.liens.length > 0 && (
