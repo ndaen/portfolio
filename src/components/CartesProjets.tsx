@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { ligneMeta } from '@/lib/meta'
 import type { Projet } from '@/lib/projets'
 import { RepereSection } from '@/components/RepereSection'
 
@@ -17,7 +18,7 @@ export function CartesProjets({ projets, repere }: { projets: Projet[]; repere?:
               >
                 <h3 className="text-[15px] font-semibold">{p.titre}</h3>
                 <p className="mt-1.5 text-[13px] leading-relaxed text-muted">{p.resume}</p>
-                <p className="mt-3 font-mono text-[11.5px] leading-relaxed text-meta">{p.stack.join(' · ')}</p>
+                <p className="mt-3 font-mono text-[11.5px] leading-relaxed text-meta">{ligneMeta(p.stack)}</p>
               </Link>
             </li>
           ))}

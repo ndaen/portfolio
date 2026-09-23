@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { ligneMeta } from '@/lib/meta'
 import type { Projet } from '@/lib/projets'
 
 export function TuilesProduit({ projets }: { projets: Projet[] }) {
@@ -19,7 +20,7 @@ export function TuilesProduit({ projets }: { projets: Projet[] }) {
               <h3 className="mt-4 text-[15px] font-semibold">{p.titre}</h3>
               <p className="mt-1.5 text-[13px] leading-relaxed text-muted">{p.resume}</p>
               <p className="mt-3 font-mono text-[11.5px] leading-relaxed text-meta">
-                {[...p.stack, p.etat].join(' · ')}
+                {ligneMeta([...p.stack, p.etat])}
               </p>
             </Link>
           </li>

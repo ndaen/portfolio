@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { ligneMeta } from '@/lib/meta'
 import type { Projet } from '@/lib/projets'
 
 /** Index `/projets` : une ligne par projet, vignette, titre et stack alignée à droite. */
@@ -29,7 +30,7 @@ export function ListeProjets({ projets }: { projets: Projet[] }) {
                 <p className="mt-1 text-[14px] leading-relaxed text-muted">{p.resume}</p>
               </div>
               <p className="col-start-2 font-mono text-[11.5px] leading-relaxed text-meta md:col-start-3 md:text-right">
-                {p.stack.join(' · ')}
+                {ligneMeta(p.stack)}
               </p>
             </Link>
           </li>

@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { listerProjets, lireProjet } from '@/lib/projets'
+import { ligneMeta } from '@/lib/meta'
 import { composantsMdx } from '@/components/mdx'
 
 const dossier = path.join(process.cwd(), 'content/projets')
@@ -47,7 +48,7 @@ export default async function PageProjet({ params }: { params: Promise<{ slug: s
       <p className="mt-3 text-muted">{projet.resume}</p>
 
       <p className="mt-5 font-mono text-[13px] text-meta">
-        {[...projet.stack, projet.etat].join(' · ')}
+        {ligneMeta([...projet.stack, projet.etat])}
       </p>
 
       {projet.liens.length > 0 && (
