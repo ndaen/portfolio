@@ -19,7 +19,7 @@ export default function Accueil() {
       <Hero />
       <TuilesProduit projets={projets.filter((p) => p.vedette)} />
       <Parcours />
-      <CartesProjets projets={projets} />
+      <CartesProjets projets={projets} repere="02" />
       <Competences groupes={profil.competences} />
     </>
   )

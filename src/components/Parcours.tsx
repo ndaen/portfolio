@@ -1,3 +1,5 @@
+import { RepereSection } from '@/components/RepereSection'
+
 const faits = [
   'Évolutions et livraison de versions de l’application mobile Sampleo (React Native), utilisée par 78 000 personnes chaque mois.',
   'Page « Mes défis » menée de bout en bout : endpoints API Platform et écran React Native.',
@@ -11,6 +13,7 @@ export function Parcours() {
   return (
     <section id="parcours" className="mx-auto max-w-6xl scroll-mt-20 px-4 sm:px-6">
       <div className="border-t border-line py-(--espace-section)">
+        <RepereSection numero="01" libelle="Parcours" />
         <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
           Deux ans et demi chez Webedia
         </h2>
