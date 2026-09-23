@@ -4,7 +4,7 @@ import { avecSchema } from '@/lib/url'
 export function Footer({ profil }: { profil: Profil }) {
   return (
     <footer id="contact" className="mx-auto max-w-6xl px-4 sm:px-6">
-      <div className="border-t border-line py-12">
+      <div className="border-t border-line py-(--espace-section)">
         <h2 className="text-2xl font-bold tracking-tight">Me contacter</h2>
         <p className="mt-3 max-w-prose text-muted">{profil.disponibilite}</p>
         <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2">

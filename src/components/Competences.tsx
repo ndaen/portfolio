@@ -3,7 +3,7 @@ import type { Profil } from '@/lib/profile'
 export function Competences({ groupes }: { groupes: Profil['competences'] }) {
   return (
     <section className="mx-auto max-w-6xl px-4 sm:px-6">
-      <div className="border-t border-line py-14">
+      <div className="border-t border-line py-(--espace-section)">
         <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Stack</h2>
         <dl className="mt-7 grid gap-x-8 gap-y-5 sm:grid-cols-2">
           {groupes.map((g) => (

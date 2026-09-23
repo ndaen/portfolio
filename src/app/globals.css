@@ -20,6 +20,11 @@
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
+/* Rythme vertical unique entre sections (spec §6) : une seule valeur, à chaque jointure. */
+:root {
+  --espace-section: clamp(72px, 10vw, 140px);
+}
+
 html { color-scheme: dark; }
 
 body {

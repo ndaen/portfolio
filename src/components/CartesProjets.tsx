@@ -12,7 +12,7 @@ export function CartesProjets({
   const TitreCarte = niveauTitre === 'h1' ? 'h2' : 'h3'
   return (
     <section className="mx-auto max-w-6xl px-4 sm:px-6">
-      <div className="border-t border-line py-14">
+      <div className="border-t border-line py-(--espace-section)">
         <Titre className="text-2xl font-bold tracking-tight sm:text-3xl">Projets</Titre>
         <ul className="mt-7 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
           {projets.map((p) => (

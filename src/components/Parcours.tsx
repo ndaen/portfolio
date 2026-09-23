@@ -10,7 +10,7 @@ const faits = [
 export function Parcours() {
   return (
     <section id="parcours" className="mx-auto max-w-6xl scroll-mt-20 px-4 sm:px-6">
-      <div className="border-t border-line py-14">
+      <div className="border-t border-line py-(--espace-section)">
         <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
           Deux ans et demi chez Webedia
         </h2>
