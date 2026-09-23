@@ -63,17 +63,17 @@ body {
 }
 
 /* Apparition au scroll des tuiles/cartes : timeline de vue native, aucun JS.
+   Translation uniquement, jamais l'opacité : un élément à moitié entré dans
+   l'écran resterait à moitié transparent, donc sous le contraste AA.
    Enfermée dans @supports : sans prise en charge (ex. Firefox aujourd'hui),
    aucune règle ne s'applique et le contenu reste visible normalement. */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     @keyframes apparition {
       from {
-        opacity: 0;
         transform: translateY(18px);
       }
       to {
-        opacity: 1;
         transform: translateY(0);
       }
     }
