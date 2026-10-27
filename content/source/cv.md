@@ -77,7 +77,7 @@ Analyse Big Data du marché immobilier français avec visualisations interactive
 
 ## Availability
 
-Disponible à partir du 26 septembre 2026 · CDI · Paris et Île-de-France, télétravail partiel
+Disponible à partir du 2 novembre 2026 · CDI · Paris et Île-de-France, télétravail partiel
 
 ## Interests
 
